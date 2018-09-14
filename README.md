@@ -39,7 +39,7 @@ target: Split long videos into several segments according to input transcript of
 - video and transcript mush have the same name; There are no space in the name.
 
 
-## Bash command for all process
+## Main porcess
 
 ```sh
 ## origin datas：./video  <video, transscript> pairs
@@ -48,7 +48,7 @@ target: Split long videos into several segments according to input transcript of
 sh run_all.sh
 ```
 
-### Video Segment
+#### Video Segment
 `video_seg_lian.py`: the main file
 
 `--data_root`: input data root
@@ -90,7 +90,7 @@ cmd = 'ffmpeg -i %s -acodec copy -ss %s -to %s %s' %(video_path, start, end, vid
 | mp4           | yes     | yes     | 593kb（clear, but begining is wrong） |
 
 
-### Segment Selection
+#### Segment Selection
 
 `video_select.py` : generate `--gene_trans_file` from original transcript.txt of each video
 
@@ -125,7 +125,7 @@ python video_select.py --data_root='./video_sub' --gene_trans_file='./video_sub/
 python video_select.py --data_root='./video_sub' --gene_trans_file='./video_sub/trans_gene.txt' --select_type=3 --min_len=1 --max_len=10
 ```
 
-### Gain new subvideos after selection
+#### Gain new subvideos after selection
 `video_seg_lian.py`: gain subvideo according to `gene_trans_file`
 
 `--data_root`: input data root
