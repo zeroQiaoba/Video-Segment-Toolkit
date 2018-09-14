@@ -15,7 +15,7 @@ Target: Split long videos into several segments according to input transcript of
 The main pipeline is that:
 - 1.split video into segments by corresponded transcript
 - 2.select segments by three segmentment approach.(choose one approach)
-- 2.generate selected segments
+- 3.generate selected segments
 
 ## Install
 
