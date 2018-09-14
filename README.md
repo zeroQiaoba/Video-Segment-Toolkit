@@ -42,7 +42,8 @@ sh run_all.sh
 
 `--save_root`: save generate data root
 
-`--max_len_one_video`: -1 无限制长度。否则，限制长度
+`--max_len_one_video`: -1: segment number is unlimited
+
 
 ```sh
 # only extract 100 subvideo from original video
@@ -53,12 +54,13 @@ python video_seg_lian.py --data_root='./video' --save_root='./video_sub' --max_l
 ```
 
 - ffmpeg: video segment commond comparison
-```sh
-## 切分格式1 高清，但是视屏对齐（最好的切分方法）
+
+```python
+## the best choice
 video_subpath = os.path.join(video_save_root, video_subname+'.mp4')
 cmd = 'ffmpeg -i %s -acodec copy -ss %s -to %s %s' %(video_path, start, end, video_subpath)
 
-## 低清，但是内容完整，不会报错
+## not clear
 #video_subpath = os.path.join(video_save_root, video_subname+'.avi')
 #cmd = 'ffmpeg -i %s -ss %s -to %s %s' %(video_path, start, end, video_subpath)
 ```
@@ -105,9 +107,8 @@ python video_select.py --data_root='./video_sub' --gene_trans_file='./video_sub/
 ```
 
 - type 3：
-  - 1 filter according to lens (gain video in [`min_len`, `max_len`])
+  - 1 filter according to lens (gain video in [`min_len`, `max_len`])(dlib is not needed)
 ```sh
-# len至少为4的数据保留，其余的都删除（不需要安装dlib和opencv）
 python video_select.py --data_root='./video_sub' --gene_trans_file='./video_sub/trans_gene.txt' --select_type=3 --min_len=1 --max_len=10
 ```
 
@@ -118,7 +119,7 @@ python video_select.py --data_root='./video_sub' --gene_trans_file='./video_sub/
 
 `--save_root`: save generate data root
 
-`--max_len_one_video`: -1 无限制长度。否则，限制长度
+`--max_len_one_video`:  -1: segment number is unlimited
 
 `--gene_trans_file`: generate trans_file path
 
