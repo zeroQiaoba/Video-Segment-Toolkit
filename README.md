@@ -1,5 +1,5 @@
 # Video Segment Toolkit
-target: Split long videos into several segments according to input transcript of videos. Then we can label segments through labelling toolkit. We provide three segmentment approach.
+Target: Split long videos into several segments according to input transcript of videos. Then we can label segments through labelling toolkit. We provide three segmentment approach.
 - type 1：
   - 1 filter according to lens (gain video in [`min_len`, `max_len`])
   - 2 filter according to how much frames in the video has faces (`min_score`)
@@ -12,6 +12,10 @@ target: Split long videos into several segments according to input transcript of
 - type 3：
   - 1 filter according to lens (gain video in [`min_len`, `max_len`])(dlib is not needed)
 
+The main pipeline is that:
+- 1.split video into segments by corresponded transcript
+- 2.select segments by three segmentment approach.(choose one approach)
+- 2.generate selected segments
 
 ## Install
 
@@ -66,7 +70,7 @@ python video_seg_lian.py --data_root='./video' --save_root='./video_sub' --max_l
 python video_seg_lian.py --data_root='./video' --save_root='./video_sub' --max_len_one_video=-1
 ```
 
-- ffmpeg: video segment commond comparison
+- ffmpeg: video segment commond *comparison*
 
 ```python
 ## the best choice
