@@ -1,4 +1,17 @@
 # Video Segment Toolkit
+target: Split long videos into several segments according to input transcript of videos. Then we can label segments through labelling toolkit. We provide three segmentment approach.
+- type 1：
+  - 1 filter according to lens (gain video in [`min_len`, `max_len`])
+  - 2 filter according to how much frames in the video has faces (`min_score`)
+
+- type 2：
+  - 1 merge continuous video if they have the same person inside
+  - 2 filter according to how much frames in the video has faces (`min_score`)
+  - 3 filter according to lens (gain video in [`min_len`, `max_len`])
+
+- type 3：
+  - 1 filter according to lens (gain video in [`min_len`, `max_len`])(dlib is not needed)
+
 
 ## Install
 
